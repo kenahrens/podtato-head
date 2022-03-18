@@ -1,14 +1,9 @@
 ---
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: podtato-kubectl
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: podtato-head-entry
-  namespace: podtato-kubectl
+  namespace: default
   labels:
     app: podtato-head
 spec:
@@ -35,7 +30,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: podtato-head-entry
-  namespace: podtato-kubectl
+  namespace: default
   labels:
     app: podtato-head
 spec:
@@ -54,7 +49,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: podtato-head-hat
-  namespace: podtato-kubectl
+  namespace: default
   labels:
     app: podtato-head
 spec:
@@ -81,7 +76,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: podtato-head-hat
-  namespace: podtato-kubectl
+  namespace: default
   labels:
     app: podtato-head
 spec:
@@ -98,7 +93,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: podtato-head-left-leg
-  namespace: podtato-kubectl
+  namespace: default
   labels:
     app: podtato-head
 spec:
@@ -125,7 +120,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: podtato-head-left-leg
-  namespace: podtato-kubectl
+  namespace: default
   labels:
     app: podtato-head
 spec:
@@ -142,7 +137,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: podtato-head-left-arm
-  namespace: podtato-kubectl
+  namespace: default
   labels:
     app: podtato-head
 spec:
@@ -169,7 +164,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: podtato-head-left-arm
-  namespace: podtato-kubectl
+  namespace: default
   labels:
     app: podtato-head
 spec:
@@ -186,7 +181,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: podtato-head-right-leg
-  namespace: podtato-kubectl
+  namespace: default
   labels:
     app: podtato-head
 spec:
@@ -213,7 +208,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: podtato-head-right-leg
-  namespace: podtato-kubectl
+  namespace: default
   labels:
     app: podtato-head
 spec:
@@ -230,7 +225,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: podtato-head-right-arm
-  namespace: podtato-kubectl
+  namespace: default
   labels:
     app: podtato-head
 spec:
@@ -257,7 +252,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: podtato-head-right-arm
-  namespace: podtato-kubectl
+  namespace: default
   labels:
     app: podtato-head
 spec:
