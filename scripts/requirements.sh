@@ -22,7 +22,7 @@ fi
 ## trivy
 echo ""
 echo "installing trivy to ${install_dir}"
-trivy_version=v0.21.1
+trivy_version=v0.24.4
 curl -sSL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | \
     sh -s -- -b "${install_dir}" "${trivy_version}"
 trivy --version
