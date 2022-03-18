@@ -4,6 +4,14 @@
 ## to permanently install binaries (make require sudo): `./requirements.sh /path/to/install/dir`
 
 install_dir=${1}
+os=$(uname -s | tr "[:upper:]" "[:lower:]")
+arch=""
+case $(uname -m) in
+    i386) arch="386" ;;
+    i686) arch="386" ;;
+    x86_64) arch="amd64" ;;
+    *) echo "Unable to determine processor architecture."; exit 1 ;;
+esac
 
 if [[ -z "${install_dir}" ]]; then
     echo "INFO: installing requirements to temp dir and adding that to PATH"
@@ -23,6 +31,6 @@ trivy --version
 echo ""
 echo "installing cosign to ${install_dir}"
 cosign_version=v1.3.1
-curl -sSL -o "${install_dir}/cosign" https://storage.googleapis.com/cosign-releases/${cosign_version}/cosign-linux-amd64
+curl -sSL -o "${install_dir}/cosign" https://storage.googleapis.com/cosign-releases/${cosign_version}/cosign-${os}-${arch}
 chmod +x "${install_dir}/cosign"
 cosign version
