@@ -97,7 +97,7 @@ fi
 ### /end build, push and sign entry container
 
 ### build et al parts containers
-parts=($(find ${app_dir}/pkg/assets/images/* -type d -printf '%f\n'))
+parts=($(find ${app_dir}/pkg/assets/images/* -type d -exec basename -a {} +))
 for part in "${parts[@]}"; do
     if [[ -z "${RELEASE_BUILD}" ]]; then
         container_name=${registry}/${github_user}/podtato-head/${part}
