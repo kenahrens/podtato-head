@@ -7,18 +7,12 @@ import (
 	"os"
 
 	"github.com/podtato-head/podtato-head/pkg/handlers"
-	"github.com/podtato-head/podtato-head/pkg/metrics"
 
 	"github.com/gorilla/mux"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 func main() {
 	router := mux.NewRouter()
-
-	// gather and emit Prometheus metrics
-	router.Use(metrics.MetricsHandler)
-	router.Path("/metrics").Handler(promhttp.Handler())
 
 	// serve current image
 	router.Path("/images/{imageName}").HandlerFunc(handlers.PartHandler)
@@ -33,3 +27,4 @@ func main() {
 	}
 	log.Printf("exiting gracefully")
 }
+

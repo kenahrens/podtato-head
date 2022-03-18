@@ -8,16 +8,14 @@ import (
 	"os"
 
 	"github.com/podtato-head/podtato-head/pkg/assets"
-	"github.com/podtato-head/podtato-head/pkg/metrics"
 	"github.com/podtato-head/podtato-head/pkg/services"
 	"github.com/podtato-head/podtato-head/pkg/version"
 
 	"github.com/gorilla/mux"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 const (
-	assetsPrefix = "/assets"
+	assetsPrefix           = "/assets"
 	externalServicesPrefix = "/parts"
 )
 
@@ -35,10 +33,6 @@ func serveHTTP(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	router := mux.NewRouter()
-
-	// gather and emit Prometheus metrics
-	router.Use(metrics.MetricsHandler)
-	router.Path("/metrics").Handler(promhttp.Handler())
 
 	// render home page
 	router.Path("/").HandlerFunc(serveHTTP)
