@@ -39,16 +39,6 @@ desired state periodically and reconciles it as needed.
 * [Single deployment via Kapp](/delivery/kapp/README.md)
 * [GitOps deployment via Flux](/delivery/flux/README.md)
 
-The following scenarios have not yet been updated for the multi-service app:
-
-* [GitOps deployment via ArgoCD](/delivery/ArgoCD/README.md)
-* [Canary deployment via Argo Rollouts](/delivery/rollout/README.md)
-* [Helm-based operator deployment](/delivery/podtato-operator/README.md)
-* [Multi-Stage delivery with Keptn](/delivery/keptn/README.md)
-* [CNAB with Porter air-gapped deployment](/delivery/CNABwithPorter/README.md)
-* [GitOps deployment via KubeVela](/delivery/KubeVela/README.md)
-* [GitOps deployment via Gimlet CLI](/delivery/gimlet/README.md)
-
 ## Extend it
 
 Here's how to extend podtato-head for your own purposes or to contribute to the

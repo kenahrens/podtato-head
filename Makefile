@@ -14,15 +14,4 @@ push-microservices-images:
 test-microservices:
 	podtato-head-microservices/build/test_services.sh
 
-### podtato-head-server
-
-build-server-images:
-	podtato-head-server/build/build_image.sh
-
-push-server-images:
-	PUSH_TO_REGISTRY=1 podtato-head-server/build/build_image.sh
-
-test-server:
-	podtato-head-server/build/test_image.sh
-
-.PHONY: build-microservices-images push-microservices-images test-microservices install-requirements build-server-images push-server-images test-server
+.PHONY: build-microservices-images push-microservices-images test-microservices install-requirements 
