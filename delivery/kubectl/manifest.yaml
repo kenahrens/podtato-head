@@ -21,10 +21,10 @@ spec:
         image: ghcr.io/nrb/podtato-head/entry:0.2.7
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 9000
+        - containerPort: 31000
         env:
         - name: PODTATO_PORT
-          value: "9000"
+          value: "31000"
 ---
 apiVersion: v1
 kind: Service
@@ -38,9 +38,9 @@ spec:
     component: podtato-head-entry
   ports:
   - name: http
-    port: 9000
+    nodePort: 31000
+    port: 31000
     protocol: TCP
-    targetPort: 9000
   type: LoadBalancer
   # change to NodePort if no LoadBalancer controller is available
   # type: NodePort
