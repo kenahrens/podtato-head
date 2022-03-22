@@ -9,9 +9,11 @@ of these to use.
 <img src="podtato-head-microservices/pkg/assets/images/podtato-head.png" alt="Podtato Man" width="300" style="vertical-align: text-top;" />
 
 The app comprises a set of microservices in `podtato-head-microservices` and a set of examples
-demonstrating how to deliver them in `delivery`. The services are defined with
-as little additional logic as possible to enable you to focus on the delivery
-mechanisms themselves.
+demonstrating how to deliver them in `delivery`.
+
+This app is a great example of what microservices can look like within Kubernetes, and therefore a great example of using Speedscale to visualize traffic.
+
+⚠️  **This fork from Speedscale focuses on the microservices themselves, so it only uses the `kubectl` example** ⚠️
 
 ## Use it
 
@@ -28,16 +30,7 @@ described in the walkthrough.
 
 ### Delivery scenarios
 
-"Single" deployment means the action effects the state of the resources _only
-once_ at the time of invocation. "GitOps" deployments mean the action checks the
-desired state periodically and reconciles it as needed.
-
 * [Single deployment via Kubectl](/delivery/kubectl/README.md)
-* [Single deployment via Helm](/delivery/chart/README.md)
-* [Single deployment via Kustomize](/delivery/kustomize/README.md)
-* [Single deployment via Ketch](/delivery/ketch/README.md)
-* [Single deployment via Kapp](/delivery/kapp/README.md)
-* [GitOps deployment via Flux](/delivery/flux/README.md)
 
 ## Extend it
 
