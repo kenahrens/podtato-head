@@ -65,7 +65,7 @@ fi
 if [[ -z "${RELEASE_BUILD}" ]]; then
     container_name=${registry}/${github_user}/podtato-head/entry
 else
-    container_name=${registry}/podtato-head/entry
+    container_name=${registry}/speedscale/podtato-head/entry
 fi
 
 echo ""
@@ -102,7 +102,7 @@ for part in "${parts[@]}"; do
     if [[ -z "${RELEASE_BUILD}" ]]; then
         container_name=${registry}/${github_user}/podtato-head/${part}
     else
-        container_name=${registry}/podtato-head/${part}
+        container_name=${registry}/speedscale/podtato-head/${part}
     fi
     echo ""
     echo "INFO: building container for ${part} as ${container_name}"
