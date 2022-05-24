@@ -20,11 +20,11 @@ spec:
       - name: server
         image: ghcr.io/speedscale/podtato-head/entry:0.2.7
         imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 31000
-        env:
-        - name: PODTATO_PORT
-          value: "31000"
+        # ports:
+        # - containerPort: 31000
+        # env:
+        # - name: PODTATO_PORT
+        #   value: "31000"
 ---
 apiVersion: v1
 kind: Service
@@ -38,12 +38,10 @@ spec:
     component: podtato-head-entry
   ports:
   - name: http
-    nodePort: 31000
-    port: 31000
+    port: 9000
+    targetPort: 9000
     protocol: TCP
-  type: LoadBalancer
-  # change to NodePort if no LoadBalancer controller is available
-  # type: NodePort
+  type: ClusterIP
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -264,3 +262,39 @@ spec:
       protocol: TCP
       targetPort: 9000
   type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podtato-head-curl
+spec:
+  selector:
+    matchLabels:
+      app: curl
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: curl
+    spec:
+      containers:
+      - name: curl
+        image: curlimages/curl
+        command: 
+          - sh
+          - -c
+          - |
+              /bin/sh <<'EOF'
+              while true; do
+                echo "$(date) Start curls"
+                curl -s -o /dev/null http://podtato-head-entry:9000
+                curl -s -o /dev/null http://podtato-head-entry:9000/assets/images/body/body.svg
+                curl -s -o /dev/null http://podtato-head-entry:9000/parts/hat/hat.svg
+                curl -s -o /dev/null http://podtato-head-entry:9000/parts/left-arm/left-arm.svg
+                curl -s -o /dev/null http://podtato-head-entry:9000/parts/right-arm/right-arm.svg
+                curl -s -o /dev/null http://podtato-head-entry:9000/parts/left-leg/left-leg.svg
+                curl -s -o /dev/null http://podtato-head-entry:9000/parts/right-leg/right-leg.svg
+                echo "$(date) End curls, time to sleep"
+                sleep $((RANDOM % 15))
+              done
+              EOF
